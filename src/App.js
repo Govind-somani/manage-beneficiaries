@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AddBeneficiary from './Components/AddBeneficiary';
+import EditBeneficiary from './Components/EditBeneficiary';
+import ViewBeneficiary from './Components/ViewBeneficiary';
+import RemoveBeneficiary from './Components/RemoveBeneficiary';
+import BeneficiaryList from './Components/BeneficiaryList';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<BeneficiaryList />} />
+        <Route path="/add" element={<AddBeneficiary />} />
+        <Route path="/edit/:id" element={<EditBeneficiary />} />
+        <Route path="/view/:id" element={<ViewBeneficiary />} />
+        <Route path="/remove/:id" element={<RemoveBeneficiary />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
